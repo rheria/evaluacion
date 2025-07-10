@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Evaluación Intermedia - Otoño 2025</title>
   <style>
     body {
@@ -31,10 +31,10 @@
     input[type="checkbox"], input[type="radio"] {
       margin-right: 0.5rem;
     }
-    textarea {
+    textarea, input[type="text"] {
       width: 100%;
-      height: 100px;
       padding: 0.5rem;
+      margin-top: 0.5rem;
     }
     .submit {
       text-align: center;
@@ -54,70 +54,93 @@
       max-width: 100%;
       height: auto;
     }
+    #message {
+      margin-top: 1rem;
+      color: green;
+      font-weight: bold;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <img src="desoj-azul-horizontal.jpg" alt="Logo ITESO DESOJ" class="logo">
     <h1>Evaluación Intermedia<br>Otoño 2025</h1>
-    <form>
+    <form id="formulario">
       <label>1. ¿Qué elementos de la guía de aprendizaje conoces?</label>
-      <input type="checkbox">Objetivos del curso<br>
-      <input type="checkbox">Temas<br>
-      <input type="checkbox">Bibliografía y material didáctico<br>
-      <input type="checkbox">Formas de evaluación<br>
-      <input type="checkbox">No he recibido mi guía de aprendizaje<br>
+      <input type="checkbox" name="p1" value="Objetivos del curso">Objetivos del curso<br>
+      <input type="checkbox" name="p1" value="Temas">Temas<br>
+      <input type="checkbox" name="p1" value="Bibliografía y material didáctico">Bibliografía y material didáctico<br>
+      <input type="checkbox" name="p1" value="Formas de evaluación">Formas de evaluación<br>
+      <input type="checkbox" name="p1" value="No he recibido">No he recibido mi guía de aprendizaje<br>
 
       <label>2. ¿Cómo describirías la interacción del/la docente contigo y con tu grupo?</label>
-      <input type="radio" name="interaccion" value="confianza">Me siento en confianza para participar y exponer mis dudas<br>
-      <input type="radio" name="interaccion" value="retroalimentacion">La/el docente retroalimenta las actividades de manera frecuente y clara<br>
-      <input type="radio" name="interaccion" value="solo_exposicion">La/el docente solamente expone el tema sin que exista mayor interacción<br>
-      <input type="radio" name="interaccion" value="complicada">La interacción con el/la docente es complicada<br>
-      <textarea placeholder="Explica por qué (solo si seleccionaste la opción anterior)"></textarea>
+      <input type="radio" name="p2" value="Confianza">Me siento en confianza para participar<br>
+      <input type="radio" name="p2" value="Retroalimentación">Retroalimenta frecuentemente<br>
+      <input type="radio" name="p2" value="Solo exposición">Solo expone sin interacción<br>
+      <input type="radio" name="p2" value="Complicada">Interacción complicada<br>
+      <textarea name="p2_comentario" placeholder="Explica si es complicada"></textarea>
 
-      <label>3. Actividades o recursos utilizados que te han ayudado a aprender</label>
-      <input type="checkbox">Tareas<br>
-      <input type="checkbox">Reportes de lectura<br>
-      <input type="checkbox">Quizzes<br>
-      <input type="checkbox">Análisis de casos<br>
-      <input type="checkbox">Trabajo en equipo<br>
-      <input type="checkbox">Uso de inteligencia artificial<br>
-      <input type="checkbox">Presentaciones del/a docente<br>
-      <input type="checkbox">Exposiciones de los demás estudiantes<br>
-      <input type="checkbox">Recursos audiovisuales y multimedia<br>
-      <input type="checkbox">Actividades en clase<br>
-      <input type="checkbox">Diálogo con personas invitadas<br>
-      <input type="checkbox">Visitas de campo<br>
-      <input type="checkbox">Discusión de noticias<br>
-      Otra: <input type="text"><br>
-      <input type="checkbox">No se ha utilizado ninguna de las anteriores<br>
+      <label>3. Actividades o recursos que te han ayudado a aprender</label>
+      <input type="checkbox" name="p3" value="Tareas">Tareas<br>
+      <input type="checkbox" name="p3" value="Lecturas">Reportes de lectura<br>
+      <input type="checkbox" name="p3" value="Quizzes">Quizzes<br>
+      <input type="checkbox" name="p3" value="IA">Uso de inteligencia artificial<br>
+      <input type="checkbox" name="p3" value="Clase">Actividades en clase<br>
+      Otra: <input type="text" name="p3_otro"><br>
 
-      <label>4. El/la docente explica adecuadamente las indicaciones:</label>
-      <input type="radio" name="indicaciones" value="siempre">Todas las veces<br>
-      <input type="radio" name="indicaciones" value="mayoria">La mayoría de las veces<br>
-      <input type="radio" name="indicaciones" value="a_veces">A veces<br>
-      <input type="radio" name="indicaciones" value="rara_vez">Rara vez<br>
-      <input type="radio" name="indicaciones" value="nunca">Nunca<br>
+      <label>4. ¿El/la docente explica adecuadamente las indicaciones?</label>
+      <input type="radio" name="p4" value="Siempre">Todas las veces<br>
+      <input type="radio" name="p4" value="Mayoría">La mayoría<br>
+      <input type="radio" name="p4" value="A veces">A veces<br>
+      <input type="radio" name="p4" value="Rara vez">Rara vez<br>
+      <input type="radio" name="p4" value="Nunca">Nunca<br>
 
-      <label>5. Los materiales están disponibles en Canvas:</label>
-      <input type="radio" name="canvas" value="siempre">Todas las veces<br>
-      <input type="radio" name="canvas" value="mayoria">La mayoría de las veces<br>
-      <input type="radio" name="canvas" value="a_veces">A veces<br>
-      <input type="radio" name="canvas" value="rara_vez">Rara vez<br>
-      <input type="radio" name="canvas" value="nunca">Nunca<br>
+      <label>5. ¿Los materiales están disponibles en Canvas?</label>
+      <input type="radio" name="p5" value="Siempre">Todas las veces<br>
+      <input type="radio" name="p5" value="Mayoría">La mayoría<br>
+      <input type="radio" name="p5" value="A veces">A veces<br>
+      <input type="radio" name="p5" value="Rara vez">Rara vez<br>
+      <input type="radio" name="p5" value="Nunca">Nunca<br>
 
-      <label>6. Tiempo fuera del aula dedicado a la materia semanalmente:</label>
-      <input type="radio" name="tiempo" value="4h">4 horas<br>
-      <input type="radio" name="tiempo" value="2-3h">2–3 horas<br>
-      <input type="radio" name="tiempo" value="1h">1 hora o menos<br>
+      <label>6. Tiempo fuera del aula dedicado a la materia:</label>
+      <input type="radio" name="p6" value="4h">4 horas<br>
+      <input type="radio" name="p6" value="2-3h">2–3 horas<br>
+      <input type="radio" name="p6" value="1h">1 hora o menos<br>
 
       <label>7. Comentarios o sugerencias finales:</label>
-      <textarea placeholder="Tu comentario aquí..."></textarea>
+      <textarea name="p7" placeholder="Tu comentario aquí..."></textarea>
 
       <div class="submit">
         <button type="submit">Enviar evaluación</button>
       </div>
+      <div id="message"></div>
     </form>
   </div>
+
+  <script>
+    const form = document.getElementById('formulario');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = {
+        p1: formData.getAll('p1').join(', '),
+        p2: formData.get('p2'),
+        p2_comentario: formData.get('p2_comentario'),
+        p3: formData.getAll('p3').join(', '),
+        p3_otro: formData.get('p3_otro'),
+        p4: formData.get('p4'),
+        p5: formData.get('p5'),
+        p6: formData.get('p6'),
+        p7: formData.get('p7')
+      };
+      const response = await fetch('https://script.google.com/macros/s/AKfycbyuAFzBaKNHK7iu36FS2cNfE2tYQ_kf9W30ROWXMmqH5peKX1q8xyxrxxgo51EAMrcT/exec', {
+        method: 'POST',
+        body: JSON.stringify(data)
+      });
+      document.getElementById('message').textContent = '¡Gracias por responder!';
+      form.reset();
+    });
+  </script>
 </body>
 </html>
