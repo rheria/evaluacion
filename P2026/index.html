@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Evaluación docente | ITESO</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <img src="logo-iteso.jpg" alt="ITESO" class="logo"/>
+    <div class="header-text">
+      <h1>Evaluación docente</h1>
+      <p class="subtitle">Intermedia · Primavera 2026</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Selecciona la materia y el grupo</h2>
+
+      <div class="grid">
+        <div class="field">
+          <label for="materia">Materia</label>
+          <input id="materiaSearch" type="search" placeholder="Escribe para buscar..." autocomplete="off"/>
+          <select id="materia" required>
+            <option value="">Selecciona una materia</option>
+          </select>
+          <p class="hint">Tip: escribe 3-4 letras en “buscar” para brincar rápido en la lista.</p>
+        </div>
+
+        <div class="field">
+          <label for="grupo">Grupo</label>
+          <select id="grupo" disabled required>
+            <option value="">Primero selecciona una materia</option>
+          </select>
+          <p class="hint">Aquí verás clave de grupo, profesor, horario y modalidad.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Cuestionario</h2>
+      <p class="muted">
+        Aquí irá el cuestionario completo. Por ahora dejé la estructura lista para que,
+        al seleccionar materia y grupo, ya podamos capturar respuestas sin una lista inmanejable.
+      </p>
+
+      <div class="placeholder">
+        <p><strong>Próximo paso:</strong> pega aquí las preguntas (o vuelve a subir el Word del cuestionario)
+        y lo integro tal cual, sin inventos.</p>
+      </div>
+
+      <div class="actions">
+        <button id="btnEnviar" class="primary" disabled>Enviar evaluación</button>
+        <span id="status" class="status" aria-live="polite"></span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>ITESO · Uso interno académico</small>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
