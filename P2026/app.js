@@ -198,34 +198,25 @@ form?.addEventListener('submit', async (e) => {
     return;
   }
 
-  btnEnviar.addEventListener('click', (e) => {
+btnEnviar.addEventListener('click', (e) => {
   e.preventDefault();
 
-  const payload = collectPayload();
-
-  // Validación mínima
-  const errores = [];
-  if (!payload.materia) errores.push('Selecciona la materia.');
-  if (!payload.grupo) errores.push('Selecciona el grupo.');
-
-  if (errores.length) {
-    setStatus('Faltan datos: ' + errores.join(' '), true);
-    return;
-  }
-
-  // Guardado local (modo demo serio)
-  const KEY = 'evaluacion_docente_P2026';
-  const registros = JSON.parse(localStorage.getItem(KEY) || '[]');
-
-  const folio = 'P2026-' + Date.now().toString(36).toUpperCase();
-  payload.folio = folio;
-  payload.timestamp = new Date().toISOString();
-
-  registros.push(payload);
-  localStorage.setItem(KEY, JSON.stringify(registros));
-
-  setStatus(`Evaluación recibida ✅ Folio: ${folio}`, false);
   btnEnviar.disabled = true;
+  setStatus('Enviando…');
+
+  const payload = collectPayload();
+  console.log('Evaluación (payload):', payload);
+
+  // Simulamos envío correcto
+  setTimeout(() => {
+    mostrarGracias();
+
+    // OPCIONAL: redirigir después de unos segundos
+    // setTimeout(() => {
+    //   window.location.href = 'https://www.iteso.mx';
+    // }, 4000);
+
+  }, 400);
 });
 
 
