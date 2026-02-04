@@ -198,20 +198,36 @@ form?.addEventListener('submit', async (e) => {
     return;
   }
 
-  btnEnviar.disabled = true;
-  setStatus('Enviando…');
+  btnEnviar.addEventListener('click', (e) => {
+  e.preventDefault();
 
-  // Por ahora: muestra el payload en consola.
-  // Siguiente paso: conectar a Google Sheets / endpoint con SSO, según definas.
   const payload = collectPayload();
-  console.log('Evaluación (payload):', payload);
 
-  // Simulamos envío OK
-  setTimeout(() => {
-    setStatus('Evaluación capturada (demo). Falta conectar el destino de respuestas.', false);
-    btnEnviar.disabled = false;
-  }, 400);
+  // Validación mínima
+  const errores = [];
+  if (!payload.materia) errores.push('Selecciona la materia.');
+  if (!payload.grupo) errores.push('Selecciona el grupo.');
+
+  if (errores.length) {
+    setStatus('Faltan datos: ' + errores.join(' '), true);
+    return;
+  }
+
+  // Guardado local (modo demo serio)
+  const KEY = 'evaluacion_docente_P2026';
+  const registros = JSON.parse(localStorage.getItem(KEY) || '[]');
+
+  const folio = 'P2026-' + Date.now().toString(36).toUpperCase();
+  payload.folio = folio;
+  payload.timestamp = new Date().toISOString();
+
+  registros.push(payload);
+  localStorage.setItem(KEY, JSON.stringify(registros));
+
+  setStatus(`Evaluación recibida ✅ Folio: ${folio}`, false);
+  btnEnviar.disabled = true;
 });
+
 
 loadMaterias();
 wireQ3Exclusivity();
