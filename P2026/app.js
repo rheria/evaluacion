@@ -198,9 +198,6 @@ form?.addEventListener('submit', async (e) => {
     return;
   }
 
-btnEnviar.addEventListener('click', (e) => {
-  e.preventDefault();
-
   btnEnviar.disabled = true;
   setStatus('Enviando…');
 
@@ -219,6 +216,20 @@ btnEnviar.addEventListener('click', (e) => {
   }, 400);
 });
 
+  function mostrarGracias() {
+  document.body.innerHTML = `
+    <main style="
+      max-width: 600px;
+      margin: 80px auto;
+      text-align: center;
+      font-family: system-ui, sans-serif;
+    ">
+      <h1>Gracias por participar</h1>
+      <p>Tu evaluación ha sido registrada correctamente.</p>
+      <p>Puedes cerrar esta ventana.</p>
+    </main>
+  `;
+}
 
 loadMaterias();
 wireQ3Exclusivity();
