@@ -231,6 +231,21 @@ form?.addEventListener('submit', async (e) => {
   `;
 }
 
-loadMaterias();
-wireQ3Exclusivity();
-updateGrupoInfo();
+window.addEventListener('DOMContentLoaded', () => {
+  // 1) Verifica que el DOM exista
+  if (!materiaSelect || !grupoSelect || !btnEnviar || !statusEl) {
+    console.error('Faltan elementos en el HTML. Revisa IDs: materiaSelect, grupoSelect, btnEnviar, status');
+    return;
+  }
+
+  // 2) Verifica que CATALOGO exista
+  if (typeof CATALOGO === 'undefined') {
+    console.error('CATALOGO no está definido. Revisa que data.js cargue ANTES que app.js y que NO sea type="module".');
+    setStatus('No se pudo cargar el catálogo (data.js).', true);
+    return;
+  }
+
+  loadMaterias();
+  wireQ3Exclusivity();
+  updateGrupoInfo();
+});
